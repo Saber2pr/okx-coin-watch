@@ -1,0 +1,79 @@
+{
+	"name": "okx-coin-watch",
+	"displayName": "Okx Coin Watch",
+	"description": "Watch Okx Coin Price in vscode.",
+	"publisher": "saber2pr",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Saber2pr/okx-coin-watch.git"
+	},
+	"icon": "assets/logo.png",
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"title": "Refresh Coin List",
+				"command": "okx-coin-watch.refresh",
+				"icon": "$(refresh)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "okx-coin-watch",
+					"title": "Okx Coin Watch",
+					"icon": "assets/logo.png"
+				}
+			]
+		},
+		"views": {
+			"okx-coin-watch": [
+				{
+					"id": "okx-coin-watch",
+					"name": "Okx Coin Watch",
+					"icon": "assets/logo.png"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "okx-coin-watch",
+				"contents": "loading"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "okx-coin-watch.refresh",
+					"group": "navigation",
+					"when": "view == okx-coin-watch"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"build": "vsce package"
+	},
+	"devDependencies": {
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.56.0",
+		"typescript": "^4.1.3"
+	},
+	"dependencies": {
+		"axios": "^1.6.3",
+		"cheerio": "^1.0.0-rc.12"
+	}
+}
