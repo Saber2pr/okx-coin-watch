@@ -33,15 +33,23 @@ export class ViewerProvider implements vscode.TreeDataProvider<AstNodeItem> {
         ]
       }
     } else {
-      const list = await getCoinList()
+      let list = await getCoinList()
 
       const favorite = vscode.workspace
         .getConfiguration('okx-coin-watch.config')
         .get<string[]>('favorite')
 
-      return list
-        .filter(item => getArray(favorite).find(fav => item.coin === fav))
-        .map(coin => new AstNodeItem(`${coin.coin}: ${coin.price}`, coin))
+      const favoriteList = getArray(favorite)
+
+      if (favoriteList.length > 0) {
+        list = list.filter(item =>
+          getArray(favorite).find(fav => item.coin === fav)
+        )
+      }
+
+      return list.map(
+        coin => new AstNodeItem(`${coin.coin}: ${coin.price}`, coin)
+      )
     }
   }
 
