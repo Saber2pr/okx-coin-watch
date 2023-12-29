@@ -25,6 +25,11 @@
 				"title": "Refresh Coin List",
 				"command": "okx-coin-watch.refresh",
 				"icon": "$(refresh)"
+			},
+			{
+				"title": "Join Okx",
+				"command": "okx-coin-watch.jump",
+				"icon": "$(link)"
 			}
 		],
 		"viewsContainers": {
@@ -53,6 +58,11 @@
 		],
 		"menus": {
 			"view/title": [
+				{
+					"command": "okx-coin-watch.jump",
+					"group": "navigation",
+					"when": "view == okx-coin-watch"
+				},
 				{
 					"command": "okx-coin-watch.refresh",
 					"group": "navigation",
