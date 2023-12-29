@@ -20,6 +20,21 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"configuration": [
+			{
+				"title": "Okx Coin Watch",
+				"properties": {
+					"okx-coin-watch.config.favorite": {
+						"description": "Favorite Coins, filter coins in side menu.",
+						"type": "array",
+						"items": {
+							"type": "string",
+							"description": "Pair of Coin, like BTC/USDT"
+						}
+					}
+				}
+			}
+		],
 		"commands": [
 			{
 				"title": "Refresh Coin List",

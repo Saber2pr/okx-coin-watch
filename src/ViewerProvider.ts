@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import { Coin } from './utils/queryCoinList'
 import { getCoinList } from './utils/getCoinList'
+import { getArray } from './utils/kit'
 
 export class ViewerProvider implements vscode.TreeDataProvider<AstNodeItem> {
   constructor() {}
@@ -33,9 +34,14 @@ export class ViewerProvider implements vscode.TreeDataProvider<AstNodeItem> {
       }
     } else {
       const list = await getCoinList()
-      return list.map(
-        coin => new AstNodeItem(`${coin.coin}: ${coin.price}`, coin)
-      )
+
+      const favorite = vscode.workspace
+        .getConfiguration('okx-coin-watch.config')
+        .get<string[]>('favorite')
+
+      return list
+        .filter(item => getArray(favorite).find(fav => item.coin === fav))
+        .map(coin => new AstNodeItem(`${coin.coin}: ${coin.price}`, coin))
     }
   }
 
