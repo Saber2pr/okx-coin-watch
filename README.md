@@ -17,6 +17,10 @@
 
 ![gif](https://cdn.jsdelivr.net/gh/saber2pr/MyWeb@master/resource/image/vsc-okx-settings.png)
 
+> 24 Hour Price Chart
+
+![gif](https://cdn.jsdelivr.net/gh/saber2pr/MyWeb@master/resource/image/okx-coin-chart.png)
+
 ## More
 
 1. Feedback and opensource on github [okx-coin-watch](https://github.com/Saber2pr/okx-coin-watch)
