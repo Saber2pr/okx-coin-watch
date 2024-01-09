@@ -2,6 +2,7 @@ import * as vscode from 'vscode'
 import { Coin } from './utils/queryCoinList'
 import { getCoinList } from './utils/getCoinList'
 import { getArray } from './utils/kit'
+import { COM_CHART } from './constants'
 
 export class ViewerProvider implements vscode.TreeDataProvider<AstNodeItem> {
   constructor() {}
@@ -9,6 +10,16 @@ export class ViewerProvider implements vscode.TreeDataProvider<AstNodeItem> {
   async getChildren(node?: AstNodeItem): Promise<AstNodeItem[]> {
     if (node) {
       if (node.coin) {
+        const comNode = new AstNodeItem(
+          `[${node.coin.name} 24Hour Chart]`,
+          null,
+          vscode.TreeItemCollapsibleState.None
+        )
+        comNode.command = {
+          title: `View ${node.coin.name} 24Hour Chart`,
+          command: COM_CHART,
+          arguments: [node.coin.name],
+        }
         return [
           new AstNodeItem(
             `Price BTC: ${node.coin.priceBtc}`,
@@ -30,6 +41,7 @@ export class ViewerProvider implements vscode.TreeDataProvider<AstNodeItem> {
             null,
             vscode.TreeItemCollapsibleState.None
           ),
+          comNode,
         ]
       }
     } else {
