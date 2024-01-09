@@ -19,7 +19,7 @@
 
 > 24 Hour Price Chart
 
-![gif](https://cdn.jsdelivr.net/gh/saber2pr/MyWeb@master/resource/image/okx-coin-chart.png)
+![gif](https://cdn.jsdelivr.net/gh/saber2pr/MyWeb@master/resource/image/okx-coin-chart2.png)
 
 ## More
 
