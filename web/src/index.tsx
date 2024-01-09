@@ -33,6 +33,8 @@ export const App: React.FC<AppProps> = ({}) => {
       },
       yAxis: {
         type: 'value',
+        min: 'dataMin',
+        max: 'dataMax',
       },
       series: [
         {
