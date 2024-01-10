@@ -1,6 +1,15 @@
 import axios from 'axios'
 
+const resolveName = (name: string) => {
+  const ws = name.split(' ')
+  return [
+    ws[0][0].toUpperCase() + ws[0].slice(1),
+    ...ws.slice(1).map(w => w.toLowerCase()),
+  ].join('-')
+}
+
 export const getCoinChartData = async (name: string) => {
+  name = resolveName(name)
   const res = await axios.post(
     `https://www.worldcoinindex.com/home/GetGraphdatatesttest`,
     `marketid=${name}&days=1`,
